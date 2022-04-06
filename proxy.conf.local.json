@@ -1,0 +1,6 @@
+{
+    "/kinjo": {
+        "target": "http://localhost:3000/kinjo",
+        "secure": false
+    }
+}
