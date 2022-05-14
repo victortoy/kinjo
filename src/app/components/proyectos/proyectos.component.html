@@ -1,0 +1,14 @@
+<div class="row">
+    <h2>Proyectos</h2>
+</div>
+<hr>
+<div class="row" *ngFor="let row of lstRows; let i = index">
+    <div class="col mx-2 my-3 border" *ngFor="let proyecto of lstRows[i]">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ proyecto.nombre }}</h5>
+            <p class="card-text">{{ proyecto.descripcion }}</p>
+            <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+    </div>
+</div>

@@ -9,16 +9,20 @@ import { Observable } from 'rxjs';
 })
 export class UsuariosService {
 
+  private url: string;
+
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.url = environment.apiBack + environment.usuarios;
+  }
 
   login(usuario: Usuario): Observable<any> {
-    return this.http.post(environment.appUsuario + '/login', usuario);
+    return this.http.post(this.url + '/login', usuario);
   }
 
   obtenerUsuarios() {
-    return this.http.get(environment.appUsuario);
+    return this.http.get(this.url);
   }
 
 }

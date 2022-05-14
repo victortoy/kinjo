@@ -1,0 +1,43 @@
+<table class="table table-bordered" *ngIf="listaReservas.length else alertNoReservas">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Espacio</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora Inicio</th>
+            <th scope="col">Hora Fin</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reserva of listaReservas; let index = index">
+            <th scope="row">
+                {{ index + 1 }}</th>
+            <td>
+                {{ getNombreEspacio(reserva.espacioId) }}
+            </td>
+            <td>
+                {{ reserva.fecha | date : 'mediumDate'}}
+            </td>
+            <td>
+                {{ reserva.horaInicio }}
+            </td>
+            <td>
+                {{ reserva.horaFin }}
+            </td>
+            <td>
+                {{ getDescripcionEstado(reserva.estado) }}
+            </td>
+            <td class="text-center">
+                <button class="btn btn-danger" *ngIf="reserva.estado == '1'" (click)="cancelarReserva(reserva.id)">
+                    <i class="fa fa-solid fa-ban"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #alertNoReservas>
+Please friend, login.
+</ng-template>

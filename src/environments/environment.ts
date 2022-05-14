@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  appUsuario: 'http://localhost:3000/kinjo/users'
+  apiBack: 'http://localhost:3000/kinjo',
+
+  usuarios: '/usuarios',
+  espacios: '/espacios',
+  reservas: '/reservas'
 };
 
 /*

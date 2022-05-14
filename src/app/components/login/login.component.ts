@@ -42,10 +42,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let usuarioLogin = new Usuario();
     let { usuario, password } = this.loginForm.value;
-    usuarioLogin.usuario =  usuario;
-    usuarioLogin.password =  password;
+    let usuarioLogin = {
+      usuario,
+      password
+    }
     this.isError = false;
 
     this.usuarioService.login(usuarioLogin).subscribe({
