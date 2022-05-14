@@ -18,6 +18,7 @@ import { EspacioService } from './services/espacios/espacio.service';
 
 // Modulos componentes ngx-bootstrap
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { EspacioReservasActualesComponent } from './components/espacios/espacio-reservas-actuales/espacio-reservas-actuales.component';
@@ -45,6 +46,7 @@ import { EspacioAprobacionComponent } from './components/espacios/espacio-aproba
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ToastrModule.forRoot()
   ],

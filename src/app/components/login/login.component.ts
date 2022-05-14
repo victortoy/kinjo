@@ -32,6 +32,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let usuario: Usuario = this.getUser();
+    if (usuario?.id) {
+      this.redirectByRol(usuario.rolId);
+    }
   }
 
   crearFormulario() {
@@ -50,20 +54,34 @@ export class LoginComponent implements OnInit {
     this.isError = false;
 
     this.usuarioService.login(usuarioLogin).subscribe({
-      complete: () => {
-        console.log('completo')
-      },
+      complete: () => {},
       error: (e) => {
         console.log('error', e);
         this.isError = true;
         this.mensajeError = e.error || 'No se pudo ingresar';
       },    
-      next: (v) => {
+      next: (usuario: Usuario) => {
         this.isError = false;
-        console.log("Log: ", v);
-        this.router.navigate(['/home']);
+        localStorage.setItem('user', JSON.stringify(usuario));
+        this.redirectByRol(usuario.rolId);
       }
     });
+  }
+
+  getUser(): Usuario {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  redirectByRol(rolId: string) {
+    console.log('redirect: ', rolId);
+    
+    if (rolId === '1' || rolId === '3') {
+      this.router.navigate(['/home']);
+    } else if (rolId == '2') {
+      this.router.navigate(['/espacios/aprobacion']);
+    } else if (rolId == '4' || rolId == '5') {
+      this.router.navigate(['/espacios']);
+    }
   }
 
 }

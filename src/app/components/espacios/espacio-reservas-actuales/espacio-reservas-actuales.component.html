@@ -31,7 +31,8 @@
             </td>
             <td class="text-center">
                 <button class="btn btn-danger" *ngIf="reserva.estado == '1'" (click)="cancelarReserva(reserva.id)">
-                    <i class="fa fa-solid fa-ban"></i>
+                    <!-- <i class="fa fa-solid fa-ban"></i> -->
+                    <small>Cancelar</small>
                 </button>
             </td>
         </tr>
@@ -39,5 +40,5 @@
 </table>
 
 <ng-template #alertNoReservas>
-Please friend, login.
+    No hay Reservas para visualizar
 </ng-template>
