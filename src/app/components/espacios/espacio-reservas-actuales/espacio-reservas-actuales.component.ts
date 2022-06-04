@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Espacio } from 'src/app/models/espacio';
 import { EstadoReserva } from 'src/app/models/estadoReserva';
 import { Reserva } from 'src/app/models/reserva';
+import { Usuario } from 'src/app/models/usuario';
 import { EspacioService } from 'src/app/services/espacios/espacio.service';
 import { ReservaService } from 'src/app/services/reservas/reserva.service';
 
@@ -30,10 +31,9 @@ export class EspacioReservasActualesComponent implements OnInit {
   }
 
   obtenerReservas(): void {
-    //TODO cambiar por usuario logueado
-    let usuarioId = 1;
+    let usuario: Usuario = JSON.parse(localStorage.getItem('user'));
 
-    this.reservaService.obtenerReservas(usuarioId).subscribe({
+    this.reservaService.obtenerReservasPorUsuario(usuario.id).subscribe({
       next: (success: any) => {
         this.listaReservas = success;
       },

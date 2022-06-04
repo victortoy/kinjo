@@ -25,6 +25,7 @@ import { EspacioReservasActualesComponent } from './components/espacios/espacio-
 import { ReservaService } from './services/reservas/reserva.service';
 import { ToastrModule } from 'ngx-toastr';
 import { EspacioAprobacionComponent } from './components/espacios/espacio-aprobacion/espacio-aprobacion.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { EspacioAprobacionComponent } from './components/espacios/espacio-aproba
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
     TabsModule.forRoot(),
     ToastrModule.forRoot()
   ],

@@ -1,1 +1,65 @@
-<p>espacio-aprobacion works!</p>
+<div class="col-6 mx-auto">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Espacio</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora Inicio</th>
+                <th scope="col">Hora Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reserva of listaReservas; let index = index" (click)="openModal(editarReserva, reserva)">
+                <th scope="row">{{ index + 1 }}</th>
+                <td>
+                    {{ getNombreEspacio(reserva.espacioId) }}
+                </td>
+                <td>
+                    {{ reserva.fecha | date : 'mediumDate'}}
+                </td>
+                <td>{{ reserva.horaInicio }}</td>
+                <td>{{ reserva.horaFin }}</td>
+                <td class="text-center">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #editarReserva>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Reserva en {{ getNombreEspacio(reservaSeleccionada.espacioId) }}</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-4">Fecha de la reserva:</div>
+            <div class="col">{{ reservaSeleccionada.fecha | date : 'mediumDate'}}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-4">Hora de la reserva:</div>
+            <div class="col">{{ reservaSeleccionada.horaInicio }}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-4">Usuario:</div>
+            <div class="col">{{ reservaSeleccionada.usuario.usuario }}</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-4">Comentario:</div>
+            <div class="col">
+                <textarea class="col-12" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <button class="btn btn-primary col-4 mx-auto" (click)="cambiarEstado(true)">
+                Aprobar
+            </button>
+            <button class="btn btn-warning col-4 mx-auto" (click)="cambiarEstado(false)">
+                Rechazar
+            </button>
+        </div>
+    </div>
+</ng-template>

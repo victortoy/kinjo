@@ -18,8 +18,12 @@ export class ReservaService {
     this.url = environment.apiBack + environment.reservas;
   }
 
-  obtenerReservas(usuarioId): Observable<Reserva[]> {
+  obtenerReservasPorUsuario(usuarioId): Observable<Reserva[]> {
     return this.http.get<Reserva[]>(`${this.url}/lista/${usuarioId}`);
+  }
+
+  obtenerReservasPendientes(): Observable<Reserva[]> {
+    return this.http.get<Reserva[]>(`${this.url}/lista`);
   }
 
   obtenerEstados(): Observable<EstadoReserva[]> {

@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ToastrService } from 'ngx-toastr';
 import { Espacio } from 'src/app/models/espacio';
 import { Reserva } from 'src/app/models/reserva';
+import { Usuario } from 'src/app/models/usuario';
 import { EspacioService } from 'src/app/services/espacios/espacio.service';
 
 @Component({
@@ -45,9 +46,8 @@ export class EspacioReservasComponent implements OnInit {
 
   enviar() {
     const datosEnvio: any = { ...this.reservaForm.value };
-
-    //TODO: cambiar por usuario logueado
-    datosEnvio.usuarioId = 1;
+    let usuario: Usuario = JSON.parse(localStorage.getItem('user'));
+    datosEnvio.usuarioId = usuario.id;
 
     this.espacioService.reservar(datosEnvio)
       .subscribe({
